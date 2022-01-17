@@ -129,7 +129,6 @@ public class Project8 extends JFrame
             {
                 public void itemStateChanged(java.awt.event.ItemEvent evt)
                 {               
-                    lowerItemStateChanged(evt);
                     surChargeIndex = 0;           
                 }        
             });
@@ -138,7 +137,6 @@ public class Project8 extends JFrame
             {
                 public void itemStateChanged(java.awt.event.ItemEvent evt)
                 {               
-                    upperItemStateChanged(evt); 
                     surChargeIndex = 1;            
                 }        
             });
@@ -147,7 +145,6 @@ public class Project8 extends JFrame
             {
                 public void itemStateChanged(java.awt.event.ItemEvent evt)
                 {               
-                    luxuryItemStateChanged(evt);   
                     surChargeIndex = 2;          
                 }        
             });
@@ -241,7 +238,7 @@ public class Project8 extends JFrame
                 {
                      
                     textArea.append("\nTEAM   "+ teamNames[teamIndex]);
-                    textArea.append("\nTicket Cost $" + ticketprices[teamIndex]); 
+                    textArea.append("\nCost Per Ticket $" + ticketprices[teamIndex]); 
                     textArea.append("\nSurcharge $" + extraCharge[surChargeIndex]); 
                     if(e.getSource() == addToCart)
                     {
@@ -250,7 +247,7 @@ public class Project8 extends JFrame
                     }
                     textArea.append("\nSubTotal: $" + sub); 
                     textArea.append("\n"); 
-                    textArea.append("\nSets Ordered: " + numTickets);
+                    textArea.append("\nAmount Of Tickets Ordered: " + numTickets);
                     textArea.append("\n");
                     textArea.append("\nTotal Cost: $" + (sub * numTickets));
                     JOptionPane.showMessageDialog(null,textArea,"YOUR ORDER",JOptionPane.INFORMATION_MESSAGE,logos[teamIndex]);
@@ -292,18 +289,7 @@ public class Project8 extends JFrame
             {
                 numTickets = slider.getValue();
             }
-        private void lowerItemStateChanged(java.awt.event.ItemEvent evt) 
-            {
-                seating = ("lower deck seating"); 
-            } 
-        private void upperItemStateChanged(java.awt.event.ItemEvent evt) 
-            {
-                seating = ("upper deck seating"); 
-            } 
-        private void luxuryItemStateChanged(java.awt.event.ItemEvent evt) 
-            {
-                seating = ("luxury deck seating"); 
-            } 
+
             public void displayItems()
             {	   
                 for (int i = 0; i < itemIndex.length; i++)
@@ -314,5 +300,5 @@ public class Project8 extends JFrame
                     cntind++;
                 }// index of team, team names 
             }
-            
 } 
+
