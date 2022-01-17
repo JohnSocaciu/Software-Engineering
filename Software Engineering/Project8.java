@@ -15,10 +15,10 @@ public class Project8 extends JFrame
     private ImageIcon [] logos = new ImageIcon[4];
     private double [] ticketprices = {50.0,35.0,100.0,40.0};
     private Icon [] teamIcon = new ImageIcon[4];  //icons
-    private double [] seatCharge = {25.0, 50.0, 75.0};
+    private double [] extraCharge = {25.0, 50.0, 100.00};
     private int [] indexOfTeam; // storing selection of teams 
     private int teamIndex = 0;   //store selection from JComboBox (index into array of team names)
-    private int surChargeIndex = 0; 
+    private int surChargeIndex;  
     private double surCharge; //store extra charge based on seating choice
     private int numTickets; //to store input from JSlider
     private int [] itemIndex; //to store indices of all selected souvenirs in the JList   
@@ -34,7 +34,7 @@ public class Project8 extends JFrame
     private double subTotal; 
     private int cntind; 
     private double ticketPrice = ticketprices[teamIndex]; 
-    private double seatPrice = seatCharge[surChargeIndex]; 
+    private double seatPrice = extraCharge[surChargeIndex]; 
     private double sub; 
     public static void main(String[] args)
         {
@@ -129,7 +129,8 @@ public class Project8 extends JFrame
             {
                 public void itemStateChanged(java.awt.event.ItemEvent evt)
                 {               
-                    lowerItemStateChanged(evt);            
+                    lowerItemStateChanged(evt);
+                    surChargeIndex = 0;           
                 }        
             });
 
@@ -137,7 +138,8 @@ public class Project8 extends JFrame
             {
                 public void itemStateChanged(java.awt.event.ItemEvent evt)
                 {               
-                    upperItemStateChanged(evt);            
+                    upperItemStateChanged(evt); 
+                    surChargeIndex = 1;            
                 }        
             });
 
@@ -145,7 +147,8 @@ public class Project8 extends JFrame
             {
                 public void itemStateChanged(java.awt.event.ItemEvent evt)
                 {               
-                    luxuryItemStateChanged(evt);            
+                    luxuryItemStateChanged(evt);   
+                    surChargeIndex = 2;          
                 }        
             });
 
@@ -239,7 +242,7 @@ public class Project8 extends JFrame
                      
                     textArea.append("\nTEAM   "+ teamNames[teamIndex]);
                     textArea.append("\nTicket Cost $" + ticketprices[teamIndex]); 
-                    textArea.append("\nSurcharge $" + seatCharge[surChargeIndex]); 
+                    textArea.append("\nSurcharge $" + extraCharge[surChargeIndex]); 
                     if(e.getSource() == addToCart)
                     {
                     textArea.append("\nItems Ordered: \n"); 
