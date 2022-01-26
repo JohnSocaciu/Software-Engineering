@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Project8 extends JFrame
+public class ProtoType extends JFrame
 {
     private JTextArea textArea = new JTextArea(10,10);  //text area for results
     //each double in the prices array corresponds to the itemname in the same position
