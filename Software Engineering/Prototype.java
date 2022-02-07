@@ -2,48 +2,50 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Prototype extends JFrame
-{
-    private JTextArea textArea = new JTextArea(10,10);  //text area for results
-    //each double in the prices array corresponds to the itemname in the same position
-    private String [] itemNames = {"bobblehead", "thunder stick", "foam paw", "tee shirt", "sweat shirt","cap", "knit hat", "mug", "pennant" };
-    private double [] prices = {12.0,9.0,5.0,15.0,25.0,5.0,10.0,8.0,12.0,3.0};
-    //each double in the ticketprices array corresponds to the teamname in the same position
-    //and to the logo in the same positon
-    private String [] teamNames = {"Redwings","Lions","Tigers","Pistons"};
-    private String [] logos2 = {"redwings.gif","lions.gif","tigers.gif","pistons.gif"};
-    private ImageIcon [] logos = new ImageIcon[4];
-    private double [] ticketprices = {50.0,35.0,100.0,40.0};
-    private Icon [] teamIcon = new ImageIcon[4];  //icons
-    private double [] extraCharge = {25.0, 50.0, 100.00};
-    private int [] indexOfTeam; // storing selection of teams 
-    private int teamIndex = 0;   //store selection from JComboBox (index into array of team names)
-    private int surChargeIndex;  
-    private double surCharge; //store extra charge based on seating choice
-    private int numTickets; //to store input from JSlider
-    private int [] itemIndex; //to store indices of all selected souvenirs in the JList   
-    private String seating; //store selection from JRadioButtons
-    private JScrollPane scrollPane; 
-    private JList itemList; 
-    private JSlider slider; 
-    private JComboBox comboBox; 
+public class Prototype extends JFrame {
+    private JTextArea textArea = new JTextArea(10, 10); // text area for results
+    // each double in the prices array corresponds to the itemname in the same
+    // position
+    private String[] itemNames = { "bobblehead", "thunder stick", "foam paw", "tee shirt", "sweat shirt", "cap",
+            "knit hat", "mug", "pennant" };
+    private double[] prices = { 12.0, 9.0, 5.0, 15.0, 25.0, 5.0, 10.0, 8.0, 12.0, 3.0 };
+    // each double in the ticketprices array corresponds to the teamname in the same
+    // position
+    // and to the logo in the same positon
+    private String[] teamNames = { "Redwings", "Lions", "Tigers", "Pistons" };
+    private String[] logos2 = { "redwings.gif", "lions.gif", "tigers.gif", "pistons.gif" };
+    private ImageIcon[] logos = new ImageIcon[4];
+    private double[] ticketprices = { 50.0, 35.0, 100.0, 40.0 };
+    private Icon[] teamIcon = new ImageIcon[4]; // icons
+    private double[] extraCharge = { 25.0, 50.0, 100.00 };
+    private int[] indexOfTeam; // storing selection of teams
+    private int teamIndex = 0; // store selection from JComboBox (index into array of team names)
+    private int surChargeIndex;
+    private double surCharge; // store extra charge based on seating choice
+    private int numTickets; // to store input from JSlider
+    private int[] itemIndex; // to store indices of all selected souvenirs in the JList
+    private String seating; // store selection from JRadioButtons
+    private JScrollPane scrollPane;
+    private JList itemList;
+    private JSlider slider;
+    private JComboBox comboBox;
     private JRadioButton lower;
     private JRadioButton upper;
-    private JRadioButton luxury; 
-    private JButton clearButton; 
-    private double subTotal; 
-    private int cntind; 
-    private double ticketPrice = ticketprices[teamIndex]; 
-    private double seatPrice = extraCharge[surChargeIndex]; 
-    private double sub; 
-    public static void main(String[] args)
-        {
-            Project8 p8 = new Project8();
-            p8.setVisible(true);
-            p8.setSize(1000,500);
-        }
+    private JRadioButton luxury;
+    private JButton clearButton;
+    private double subTotal;
+    private int cntind;
+    private double ticketPrice = ticketprices[teamIndex];
+    private double seatPrice = extraCharge[surChargeIndex];
+    private double sub;
 
-    Project8() //default constructor
+    public static void main(String[] args) {
+        Prototype p8 = new Prototype();
+        p8.setVisible(true);
+        p8.setSize(1000, 500);
+    }
+
+    Prototype() //default constructor
     { 
             JPanel northPanel = new JPanel();      
             northPanel.setBackground(new Color(16, 114, 65));        
@@ -89,7 +91,7 @@ public class Prototype extends JFrame
             }      
             textArea.setFont(new Font("Serif", Font.BOLD, 18));
 
-            JLabel ticket = new JLabel("      TICKETS     TICKETS     TICKETS     ");                  // THE NORTH
+            JLabel ticket = new JLabel("                             TICKETS");                  // THE NORTH
             ticket.setForeground(new Color(50, 153, 255));                            
             ticket.setFont(new Font("Serif", Font.BOLD, 50));
             northPanel.add(ticket, BorderLayout.NORTH); 
@@ -186,14 +188,14 @@ public class Prototype extends JFrame
             });
             centerPanel.add(itemList);
 
-            JLabel Selection = new JLabel("Click Selection");                               // THE EAST
+            JLabel Selection = new JLabel("Click Buttons:");                               // THE EAST
             Selection.setForeground(new Color(51, 153, 255));
             Selection.setBackground(new Color(10, 10, 129));
             Selection.setFont(new Font("TimesNewRoman", Font.ITALIC, 20));
             Selection.setPreferredSize(new Dimension(140,75));
             eastPanel.add(Selection);
             
-            JButton addToCart = new JButton("AddToCart");
+            JButton addToCart = new JButton("Add To Cart");
             addToCart.setForeground(new Color(51, 153, 255));
             addToCart.setBackground(new Color(10, 10, 129));
             addToCart.setFont(new Font("TimesNewRoman", Font.BOLD, 20));
@@ -237,7 +239,7 @@ public class Prototype extends JFrame
                 public void actionPerformed(ActionEvent e) 
                 {
                      
-                    textArea.append("\nTEAM   "+ teamNames[teamIndex]);
+                    textArea.append("\nTEAM:  "+ teamNames[teamIndex]);
                     textArea.append("\nCost Per Ticket $" + ticketprices[teamIndex]); 
                     textArea.append("\nSurcharge $" + extraCharge[surChargeIndex]); 
                     if(e.getSource() == addToCart)
@@ -256,7 +258,7 @@ public class Prototype extends JFrame
 
             exitButton.addActionListener(e -> System.exit(0));
 
-            JLabel numOfTickets = new JLabel("Select number of tickets:");     // THE SOUTH
+            JLabel numOfTickets = new JLabel("Number Of Tickets:");     // THE SOUTH
             numOfTickets.setForeground(new Color(50, 153, 255));
             numOfTickets.setFont(new Font("TImesNewRoman", Font.BOLD, 30));
             southPanel.add(numOfTickets, BorderLayout.WEST);
@@ -280,25 +282,26 @@ public class Prototype extends JFrame
                 sliderStateChanged(evt);
                 }
             });
-    } 
-        private void itemListValueChanged(javax.swing.event.ListSelectionEvent evt) // methods for handlers
-            {        
-                itemIndex = itemList.getSelectedIndices(); //itemindex is an array which will now contain the index of each item selected from the list    }//end: itemListValueChanged
-            } 
-        private void sliderStateChanged(javax.swing.event.ChangeEvent evt)
-            {
-                numTickets = slider.getValue();
-            }
+    }
 
-            public void displayItems()
-            {	   
-                for (int i = 0; i < itemIndex.length; i++)
-                {
-                    textArea.append(itemNames[itemIndex[i]] + " $" + (prices[itemIndex[i]])+ "\n");
-                    subTotal += prices[itemIndex[i]];
-                    sub = ticketPrice + seatPrice + subTotal; 
-                    cntind++;
-                }// index of team, team names 
-            }
-} 
+    private void itemListValueChanged(javax.swing.event.ListSelectionEvent evt) // methods for handlers
+    {
+        itemIndex = itemList.getSelectedIndices(); // itemindex is an array which will now contain the index of each
+                                                   // item selected from the list }//end: itemListValueChanged
+    }
+
+    private void sliderStateChanged(javax.swing.event.ChangeEvent evt) {
+        numTickets = slider.getValue();
+    }
+
+    public void displayItems() {
+        for (int i = 0; i < itemIndex.length; i++) {
+            textArea.append(itemNames[itemIndex[i]] + " $" + (prices[itemIndex[i]]) + "\n");
+            subTotal += prices[itemIndex[i]];
+            sub = ticketPrice + seatPrice + subTotal;
+            cntind++;
+        } // index of team, team names
+    }
+}
+
 
